@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
-import Footer from './components/Footer';
-import Header from './components/Header';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Link from 'next/link';
 
 export default function Home() {
   const [articles, setArticles] = useState([]);
@@ -81,7 +82,9 @@ export default function Home() {
                       {section_name}
                     </li>
                   </ul>
-                  {/*<Link to="/details">Read More</Link>*/}
+                  <Link href={`/articles/?id=${_id}`}>
+                    <a>Read More</a>
+                  </Link>
                 </article>
               );
             })}

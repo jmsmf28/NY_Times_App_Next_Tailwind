@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SearchIcon, MenuIcon } from '@heroicons/react/solid';
+import NextLink from 'next/link';
 
 const Header = ({ query, searchText }) => {
   const [searchInput, setSearchInput] = useState('');
@@ -11,9 +12,11 @@ const Header = ({ query, searchText }) => {
   return (
     <>
       <div className="navbar sticky top-0 z-50 grid grid-cols-3 flex items-center">
-        <span className="text_shadow font-bold text-2xl md:text-5xl ml-10 ">
-          News Today
-        </span>
+        <NextLink href="/" passHref className="cursor-pointer">
+          <a className="text_shadow font-bold text-2xl md:text-5xl ml-10 ">
+            News Today
+          </a>
+        </NextLink>
         <div className="mx-auto">
           <div className="hidden md:flex items-center md:border-2 rounded-full md:shadow-sm ">
             <input
