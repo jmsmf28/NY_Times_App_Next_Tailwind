@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import { ArticleContext } from '../pages/articles/ArticleContext';
 import ReactPaginate from 'react-paginate';
@@ -9,12 +9,43 @@ const ListArticles = () => {
     articles,
     setArticles,
     isLoading,
-    setLoading,
+    setIsLoading,
     pageNumber,
     setPageNumber,
     query,
     setQuery,
+    filter,
+    setFilter,
   ] = useContext(ArticleContext);
+
+  const filterNewsDesk = [
+    'World',
+    'U.S.',
+    'Politics',
+    'N.Y.',
+    'Business',
+    'Opinion',
+    'Tech',
+    'Science',
+    'Health',
+    'Sports',
+    'Arts',
+    'Books',
+    'Style',
+    'Food',
+    'Travel',
+    'Magazine',
+    'T Magazine',
+    'Real Estate',
+  ];
+
+  const changeArticles = () => {
+    setArticles(articles);
+  };
+
+  const changeFilter = (event) => {
+    setFilter(event.target.value);
+  };
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -28,9 +59,27 @@ const ListArticles = () => {
         query={query}
         searchText={(text) => setQuery(text)}
       />
+      <div className="query bg-gray-600 px-5 shadow-md">
+        <div className="flex">
+          {filterNewsDesk.map((val, key) => {
+            return (
+              <button
+                className="ml-4 text-white cursor-pointer"
+                value={val}
+                key={key}
+                onClick={changeFilter}
+              >
+                {val}
+              </button>
+            );
+          })}
+        </div>
+      </div>
       <div className="-mb-50">
         {isLoading ? (
-          <h1>Loading...</h1>
+          <div className="loading">
+            <h1>Loading...</h1>
+          </div>
         ) : (
           <section className="grid grid-cols-3 gap-10 px-5 pt-8 pb-12 lg:w-9/12 lg:mx-auto">
             {articles.map((article) => {
@@ -38,12 +87,9 @@ const ListArticles = () => {
                 abstract,
                 headline: { main },
                 byline: { original },
-                lead_paragraph,
                 news_desk,
                 section_name,
-                web_url,
                 _id,
-                word_count,
               } = article;
               return (
                 <article className="bg-white py-5 px-4 rounded" key={_id}>
@@ -53,7 +99,6 @@ const ListArticles = () => {
                   <p className="overflow-ellipsis overflow-hidden">
                     {abstract}
                   </p>
-                  <p>{/*lead_paragraph*/}</p>
                   <ul className="my-4">
                     <li className="mb-2 italic">{original}</li>
                     <li>
@@ -69,8 +114,10 @@ const ListArticles = () => {
                       {section_name}
                     </li>
                   </ul>
-                  <Link href={`/details/?id=${article}`}>
-                    <a>Read More</a>
+                  <Link href={`/details/?id=${_id}`}>
+                    <a onClick={changeArticles} className="text-purple-600">
+                      Read More
+                    </a>
                   </Link>
                 </article>
               );

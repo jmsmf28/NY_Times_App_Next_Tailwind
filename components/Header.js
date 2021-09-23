@@ -40,6 +40,7 @@ const Header = ({ search, query, searchText }) => {
             <div></div>
           )}
         </div>
+
         <div className="hidden md:flex justify-end mr-10">
           <button
             className="bg-purple-600 rounded-full py-1 px-4 font-bold text-white text-base hover:bg-purple-400 hover:scale-105
@@ -54,9 +55,6 @@ const Header = ({ search, query, searchText }) => {
           transform transition duration-200 ease-out"
           />
         </div>
-      </div>
-      <div className="query bg-gray-600 px-5 shadow-md">
-        <span className="text-white ">{query}</span>
       </div>
     </>
   );
