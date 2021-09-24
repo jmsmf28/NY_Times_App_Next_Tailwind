@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { SearchIcon, MenuIcon } from '@heroicons/react/solid';
 import NextLink from 'next/link';
-import { ArticleContext } from '../pages/articles/ArticleContext';
 
 const Header = ({ search, query, searchText }) => {
   const [searchInput, setSearchInput] = useState('');
