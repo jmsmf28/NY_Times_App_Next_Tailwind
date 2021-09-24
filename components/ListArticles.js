@@ -59,12 +59,12 @@ const ListArticles = () => {
         query={query}
         searchText={(text) => setQuery(text)}
       />
-      <div className="query bg-gray-600 px-5 shadow-md">
+      <div className="query bg-gray-600 px-2 md:px-5 shadow-md">
         <div className="flex">
           {filterNewsDesk.map((val, key) => {
             return (
               <button
-                className="ml-4 text-white text-xs md:text-sm cursor-pointer"
+                className="ml-2 md:ml-4 text-white text-xs md:text-sm hover:scale-105 cursor-pointer"
                 value={val}
                 key={key}
                 onClick={changeFilter}
@@ -81,7 +81,7 @@ const ListArticles = () => {
             <h1>Loading...</h1>
           </div>
         ) : (
-          <section className="grid grid-cols-3 gap-10 px-5 pt-8 pb-12 lg:w-9/12 lg:mx-auto">
+          <section className="grid grid-cols-2 md:grid-cols-3 gap-10 px-5 pt-8 pb-12 lg:w-9/12 lg:mx-auto">
             {articles.map((article) => {
               const {
                 abstract,
