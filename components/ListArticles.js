@@ -64,7 +64,7 @@ const ListArticles = () => {
           {filterNewsDesk.map((val, key) => {
             return (
               <button
-                className="ml-4 text-white cursor-pointer"
+                className="ml-4 text-white text-xs md:text-sm cursor-pointer"
                 value={val}
                 key={key}
                 onClick={changeFilter}
@@ -115,7 +115,11 @@ const ListArticles = () => {
                     </li>
                   </ul>
                   <Link href={`/details/?id=${_id}`}>
-                    <a onClick={changeArticles} className="text-purple-600">
+                    <a
+                      onClick={changeArticles}
+                      className="text-purple-600 hover:bg-gray-100 hover:text-lg
+                    hover:rounded transform transition duration-200 ease-out"
+                    >
                       Read More
                     </a>
                   </Link>

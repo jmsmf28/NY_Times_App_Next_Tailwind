@@ -17,20 +17,20 @@ const Header = ({ search, query, searchText }) => {
             News Today
           </a>
         </NextLink>
-        <div className="mx-auto">
+        <div className="ml-24 mx-auto">
           {search ? (
-            <div className="hidden md:flex items-center md:border-2 rounded-full md:shadow-sm ">
+            <div className="flex border-2  shadow-sm md:flex items-center rounded-full md:shadow-sm ">
               <input
                 value={searchInput}
-                className="flex-grow pl-5 
-                bg-transparent outline-none text-sm 
+                className="md:flex-grow pl-2 md:pl-5 
+                bg-transparent outline-none text-xs md:text-sm 
                 text-gray-900 placeholder-gray-600"
                 type="text"
                 placeholder="e.g science"
                 onChange={(e) => setSearchInput(e.target.value)}
               />
               <SearchIcon
-                className="hidden md:inline-flex h-8 bg-purple-600 text-white rounded-full p-2 cursor-pointer md:-mx-3 hover:bg-purple-400
+                className="inline-flex h-6 md:h-8 bg-purple-600 text-white rounded-full p-2 cursor-pointer -mx-2 md:-mx-3 hover:bg-purple-400
               transform transition duration-200 ease-out"
                 onClick={searchNews}
               />
@@ -47,12 +47,6 @@ const Header = ({ search, query, searchText }) => {
           >
             Subscribe
           </button>
-        </div>
-        <div className="flex justify-end mr-10 md:hidden">
-          <MenuIcon
-            className="rounded-full py-1 px-2 w-10 cursor-pointer hover:bg-purple-400 hover:scale-105
-          transform transition duration-200 ease-out"
-          />
         </div>
       </div>
     </>
